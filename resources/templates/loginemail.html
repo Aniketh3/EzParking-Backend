@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Times New Roman', Times, serif;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            background-image: url(https://www.go.ooo/img/bg-img/Login.jpg);
+            background-repeat: no-repeat;
+            background-position: 23%;
+            background-size: 35%;
+            margin-top: 5%;
+        }
+
+        .header {
+            width: 100%;
+            height: auto;
+            color: black;
+            font-size: 64px;
+            font-weight: 600;
+            word-wrap: break-word;
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        /*.form-container {
+            width: 100%;
+            max-width: 600px; 
+            margin-left: 20px auto;
+            position: relative;
+            left: 950px;
+            top: -15px;
+        }*/
+
+        .form-box {
+            width: 100%;
+            background: #E6B8F5;
+            border-radius: 40px;
+            overflow: hidden;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 645px;
+            height: 565px;
+            position: relative;
+            left: 730px;
+        }
+
+        .form-title {
+            color: #0A0000;
+            font-size: 53px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+            /* overflow: hidden; */
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+            /* flex-shrink: 0; */
+            color: #000;
+            font-family: Inter;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 500;
+            /* line-height: normal; */
+            padding-left: 35px;
+            position: relative;
+            top: 12%;
+            margin-top: 5px;
+            /* overflow: hidden; */
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #000;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 24px;
+            font-weight: 600;
+            /* line-height: normal; */
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 24px;
+            border: 1px solid #ccc;
+            border-radius: 30px;
+            box-sizing: border-box;
+            width: 570px;
+            height: 116px;
+            flex-shrink: 0;
+            top: 12%;
+
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: #E96C6C;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 600;
+            margin-top: 30px;
+            width: 379px;
+            height: 83px;
+            font-size: 24px;
+            overflow: hidden;
+            position: relative;
+            left: 730px;
+        }
+
+        .submit-btn:hover {
+            background: #D85A5A;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 600px) {
+            .form-container {
+                width: 90%;
+                left: 5%;
+            }
+        }
+
+        .submit-btn a {
+            text-decoration: none;
+            color: #000;
+            display: block;
+        }
+
+        .sign {
+            color: #0D0000;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 30px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            margin-right: 150px;
+            position: relative;
+            left: 30px;
+            top: 5%;
+        }
+
+        #signin {
+            color: #EF1A1A;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 30px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            text-decoration-line: underline;
+        }
+
+        .error-message {
+            color: #EF1A1A;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="header">Parking Management System</div>
+    </div>
+    <div class="container">
+        <div class="form-box">
+            <div class="form-title">LOGIN</div>
+            <div class="sign">Don't have an account? <a href="signinemail.html" id="signin">Sign Up</a></div>
+            <div class="form-group">
+                <label for="email">E-mail Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+                <div id="email-error" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+                <div id="password-error" class="error-message"></div>
+            </div>
+        </div>
+        <button class="submit-btn" type="button" onclick="attemptLogin(event)">LOGIN</button>
+    </div>
+
+    <script>
+        async function attemptLogin(event) {
+            event.preventDefault();
+            var emailInput = document.getElementById('email').value;
+            var passwordInput = document.getElementById('password').value;
+            var emailError = document.getElementById('email-error');
+            var passwordError = document.getElementById('password-error');
+            var emailRegex = /^[^\s@]+@gmail\.com$/i;
+
+            // Reset error messages
+            emailError.textContent = '';
+            passwordError.textContent = '';
+
+
+            // Validate email
+            if (!emailRegex.test(emailInput)) {
+                emailError.textContent = 'Invalid email address';
+                return; // Stop execution if email is invalid
+            }
+
+            // Validate password
+            if (passwordInput.length === 0) {
+                passwordError.textContent = 'Please fill this field';
+                return; // Stop execution if password is empty
+            } else if (passwordInput.length < 6) {
+                passwordError.textContent = 'Password must be at least 6 characters';
+                return; // Stop execution if password is less than 8 characters
+            }
+            const apiUrl = 'http://localhost:8080/api/login';
+
+            const requestBody = {
+                email: emailInput,
+                password: passwordInput
+                // Add any other login-related data as needed
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        // Add any other headers as needed
+                    },
+                    body: JSON.stringify(requestBody)
+                });
+                // console.log(response);
+                if (response.status === 200) {
+                    const responseData = await response.json();
+                    console.log(responseData.message);
+                    if (responseData.message === "Authenticated") {
+                        localStorage.setItem("email", emailInput)
+                        window.location.href = "bnm.html";
+                    }else{
+                        alert("Invalid credentials");
+                    }
+                } else {
+                    alert("Something went wrong");
+                }
+            } catch (error) {
+                console.error('Error during login:', error.message);
+                // Handle any other errors during login
+            }
+            // If both email and password are valid, perform the login action or redirect to the desired page
+        }
+
+    </script>
+</body>
+
+</html>

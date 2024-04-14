@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Times New Roman', Times, serif;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            background-image: url(https://www.go.ooo/img/bg-img/Login.jpg);
+            /* background-repeat: no-repeat;
+            background-position:23%;
+            background-size: 45%; */
+            background-repeat: no-repeat;
+            background-position: 23%;
+            background-size: 35%;
+            /* margin-top: 5%; */
+        }
+
+        .header {
+            width: 100%;
+            height: auto;
+            color: black;
+            font-size: 64px;
+            font-weight: 600;
+            word-wrap: break-word;
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        /*.form-container {
+            width: 100%;
+            max-width: 600px; 
+            margin-left: 20px auto;
+            position: relative;
+            left: 950px;
+            top: -15px;
+        }*/
+
+        .form-box {
+            width: 100%;
+            background: #E6B8F5;
+            border-radius: 40px;
+            overflow: hidden;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 645px;
+            /* height: 755px;
+            padding-bottom: 40px; */
+            position: relative;
+            left: 730px;
+        }
+
+        .form-title {
+            color: #0A0000;
+            font-size: 53px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+            /* overflow: hidden; */
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+            /* flex-shrink: 0; */
+            color: #000;
+            font-family: Inter;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 500;
+            /* line-height: normal; */
+            padding-left: 35px;
+            /* overflow: hidden; */
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #000;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 24px;
+            font-weight: 600;
+            /* line-height: normal; */
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 24px;
+            border: 1px solid #ccc;
+            border-radius: 30px;
+            box-sizing: border-box;
+            width: 570px;
+            height: 116px;
+            flex-shrink: 0;
+            /* overflow: hidden; */
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: #E96C6C;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            margin-top: 30px;
+            width: 379px;
+            height: 83px;
+            font-size: 24px;
+            overflow: hidden;
+            position: relative;
+            left: 730px;
+        }
+
+        .submit-btn:hover {
+            background: #D85A5A;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 600px) {
+            .form-container {
+                width: 90%;
+                left: 5%;
+            }
+        }
+
+        .submit-btn a {
+            text-decoration: none;
+            color: #000;
+            display: block;
+        }
+
+        .error-message {
+            color: #EF1A1A;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">Parking Management System</div>
+        <div class="form-box">
+            <div class="form-title">SIGN UP</div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+                <div id="email-error" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+                <div id="password-error" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password">
+                <div id="confirmPassword-error" class="error-message"></div>
+            </div>
+        </div>
+        <button class="submit-btn" type="button" onclick="attemptSignUp()">LOGIN</button>
+    </div>
+
+    <script>
+        async function attemptSignUp() {
+            var nameInput = document.getElementById('name');
+            var emailInput = document.getElementById('email');
+            var passwordInput = document.getElementById('password');
+            var confirmPasswordInput = document.getElementById('confirmPassword');
+            var emailError = document.getElementById('email-error');
+            var passwordError = document.getElementById('password-error');
+            var confirmPasswordError = document.getElementById('confirmPassword-error');
+            var emailRegex = /^[^\s@]+@gmail\.com$/i;
+
+            // Reset error messages
+            emailError.textContent = '';
+            passwordError.textContent = '';
+            confirmPasswordError.textContent = '';
+
+            // Validate name
+            if (nameInput.value.trim() === '') {
+                alert('Please fill in your name');
+                return; // Stop execution if name is empty
+            }
+
+            // Validate email
+            if (!emailRegex.test(emailInput.value)) {
+                emailError.textContent = 'Invalid email address';
+                return; // Stop execution if email is invalid
+            }
+
+            // Validate password
+            if (passwordInput.value.length === 0) {
+                passwordError.textContent = 'Please fill this field';
+                return; // Stop execution if password is empty
+            } else if (passwordInput.value.length < 6) {
+                passwordError.textContent = 'Password must be at least 6 characters';
+                return; // Stop execution if password is less than 8 characters
+            }
+
+            // Validate confirm password
+            if (confirmPasswordInput.value !== passwordInput.value) {
+                confirmPasswordError.textContent = 'Passwords do not match';
+                return; // Stop execution if passwords do not match
+            }
+
+            var apiUrl = "http://localhost:8080/api/signup";
+
+            // Prepare the request body
+            var requestBody = {
+                name: nameInput.value,
+                email: emailInput.value,
+                password: passwordInput.value
+            };
+
+            // Make a POST request to the signup API
+            try {
+                const response = await fetch(apiUrl, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(requestBody),
+                })
+                console.log(response);
+                const data = response.json();
+                console.log(data);
+                if (response.status === 200) {
+                    alert("Signup succesful. Now you can login.");
+                    window.location.href = "loginemail.html"
+                } else if (response.status === 500) {
+                    alert("User already exixts. You can login directly")
+                } else if (response.status === 400) {
+                    alert("Failed to signup");
+                }
+            }
+            catch (error) {
+                console.error("Error during signup:", error.message);
+                alert("Error during signup. Please try again.");
+            };
+
+            // If all validations pass, you can perform the sign-up action here or redirect to the desired page
+            // window.location.href = "bnm.html";
+        }
+    </script>
+</body>
+
+</html>

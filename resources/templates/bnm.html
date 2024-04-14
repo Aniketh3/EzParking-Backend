@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Layout</title>
+	<style>
+		.container {
+			display: grid;
+			grid-gap: 10px;
+			margin: 20px;
+		}
+		.m-block {
+			background-color: rgb(186, 255, 185);
+			padding: 20px;
+            width: 212px;
+            height: 1075px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family:'Times New Roman', Times, serif ;
+            font-weight: bold;
+            font-size: 40px;
+            position: absolute;
+		}
+		.s-block {
+			background-color: rgb(255, 219, 219);
+			padding: 20px;
+            width: 1170px;
+            height: 275px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family:'Times New Roman', Times, serif ;
+            font-weight: bold;
+            font-size: 40px;
+            position: relative;
+            left: 27%;
+            
+		}
+		.n-block {
+			background-color: rgb(201, 235, 255);
+			padding: 20px;
+            width: 1980px;
+            height: 260px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family:'Times New Roman', Times, serif ;
+            font-weight: bold;
+            font-size: 40px;
+            position: absolute;
+            left: 11%;
+            top: 73%;
+		}
+		.ground {
+			background-color: rgb(254, 231, 196);
+			padding: 20px;
+            width: 212px;
+            height: 770px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family:'Times New Roman', Times, serif ;
+            font-weight: bold;
+            font-size: 40px;
+            position: absolute;
+            left: 90%;
+		}
+        .park1{
+            background-color: slategray;
+			padding: 20px;
+            width: 40px;
+            height: 275px;
+            position: absolute;
+            left: 15%;
+            display: block;
+            cursor: pointer;
+
+        }
+        .park2{
+            background-color: slategray;
+			padding: 20px;
+            width: 40px;
+            height: 275px;
+            position: absolute;
+            left: 15%;
+            bottom: 35%;
+            display: block;
+            cursor: pointer;
+
+        }
+        .park3{
+            background-color: slategray;
+			padding: 20px;
+            width: 40px;
+            height: 275px;
+            position: absolute;
+            left: 22%;
+            display: block;
+            cursor: pointer;
+
+        }
+        .park4{
+            background-color: slategray;
+			padding: 20px;
+            width: 40px;
+            height: 275px;
+            position: absolute;
+            left: 78%;
+            display: block;
+            cursor: pointer;
+
+        }
+        .park5{
+            background-color: slategray;
+			padding: 20px;
+            width: 475px;
+            height: 40px;
+            position: absolute;
+            left: 27.5%;
+            bottom: 60%;
+            display: block;
+            cursor: pointer;
+
+        }
+        .park6{
+            background-color: slategray;
+			padding: 20px;
+            width: 475px;
+            height: 40px;
+            position: absolute;
+            left: 54.7%;
+            bottom: 60%;
+            display: block;
+            cursor: pointer;
+
+        }
+        .park7{
+            background-color: slategray;
+			padding: 20px;
+            width: 475px;
+            height: 40px;
+            position: absolute;
+            left: 27.5%;
+            bottom: 47%;
+            display: block;
+            cursor: pointer;
+
+        } 
+        .park8{
+            background-color: slategray;
+			padding: 20px;
+            width: 475px;
+            height: 40px;
+            position: absolute;
+            left: 54.7%;
+            bottom: 47%;
+            display: block;
+            cursor: pointer;
+
+        } 
+       .park9{
+            background-color: slategray;
+			padding: 20px;
+            width: 475px;
+            height: 40px;
+            position: absolute;
+            left: 27.5%;
+            bottom: 34%;
+            display: block;
+            cursor: pointer;
+
+        } 
+        .park0{
+            background-color: slategray;
+			padding: 20px;
+            width: 475px;
+            height: 40px;
+            position: absolute;
+            left: 54.7%;
+            bottom: 34%;
+            display: block;
+            cursor: pointer;
+
+        } 
+        .park01{
+            background-color: slategray;
+			padding: 20px;
+            position: absolute;
+            width: 40px;
+            height: 695px;
+            left: 85%;
+            display: block;
+            cursor: pointer;
+        } 
+        .park0 a{
+            display: block;
+            text-decoration: none;
+            color: slategray;
+        }
+        .park01 a{
+            display: block;
+            text-decoration: none;
+            color: slategray;
+        }.park1 a{
+            display: block;
+            text-decoration: none;
+            color: slategray;
+        }.park2 a{
+            display: block;
+            text-decoration: none;
+            color: slategray;
+        }.park3 a{
+            display: block;
+            text-decoration: none;
+            color: slategray;
+        }.park4 a{
+            display: block;
+            text-decoration: none;
+            color: slategray;
+        }.park5 a{
+            display: block;
+            text-decoration: none;
+            color: slategray;
+        }.park6 a{
+            display: block;
+            text-decoration: none;
+            color: slategray;
+        }.park7 a{
+            display: block;
+            text-decoration: none;
+            color: slategray;
+        }.park8 a{
+            display: block;
+            text-decoration: none;
+            color: slategray;
+        }.park9 a{
+            display: block;
+            text-decoration: none;
+            color: slategray;
+        }
+	</style>
+</head>
+<body>
+	<div class="container">
+        <div class="s-block">S BLOCK</div>
+		<div class="m-block">M BLOCK</div>
+		<div class="n-block">N BLOCK</div>
+		<div class="ground">GROUND</div>
+        <div class="park1"><a href="slots.html"></a></div>
+        <div class="park2"><a href="slots.html"></a></div>
+        <div class="park3"><a href="slots.html"></a></div>
+        <div class="park4"><a href="slots.html"></a></div>
+        <div class="park5"><a href="slots.html"></a></div>
+        <div class="park6"><a href="slots.html"></a></div>
+        <div class="park7"><a href="slots.html"></a></div>
+        <div class="park8"><a href="slots.html"></a></div>
+        <div class="park9"><a href="slots.html"></a></div>
+        <div class="park0"><a href="slots.html"></a></div>
+        <div class="park01"><a href="slots.html"></a></div>
+	</div>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			var parkBoxes = document.querySelectorAll('.park1, .park2, .park3, .park4, .park5, .park6, .park7, .park8, .park9, .park0, .park01');
+
+			parkBoxes.forEach(function (box) {
+				box.addEventListener('click', function () {
+					box.style.transition = 'transform 0.5s ease-out, background-color 0.5s ease-out';
+					box.style.transform = 'scale(0.5)';
+					box.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+
+					setTimeout(function () {
+						window.location.href = box.querySelector('a').href;
+					}, 500); // Adjust the timeout duration as needed
+				});
+			});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #d4e744;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #4a86e8;
+        }
+
+        .parking-lot {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .parking-spot {
+            width: 100px;
+            height: 100px;
+            background-color: #129ced;
+            border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .parking-spot:hover {
+            background-color: #eee;
+        }
+
+        .parking-spot.booked {
+            background-color: #12e574;
+            color: #fff;
+        }
+
+        .booking-form {
+            width: 300px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .booking-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .booking-form input[type="text"],
+        .booking-form input[type="email"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        .booking-form input[type="submit"] {
+            width: 100%;
+            padding: 8px;
+            background-color: #4a86e8;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .bill {
+            width: 300px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .bill h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #4a86e8;
+        }
+
+        .bill p {
+            margin-bottom: 5px;
+        }
+    </style>
+
+    <!-- Inside the <header> or <footer> tag -->
+
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parking Lot Booking - Slot Selection</title>
+  <!-- Add any necessary stylesheets or scripts -->
+</head>
+<body>
+  <h1>Parking Lot Booking</h1>
+  <div class="parking-lot">
+    <div class="parking-spot" data-spot="A1">A1</div>
+    <div class="parking-spot" data-spot="A2">A2</div>
+    <div class="parking-spot" data-spot="A3">A3</div>
+    <div class="parking-spot" data-spot="A4">A4</div>
+    <div class="parking-spot" data-spot="A5">A5</div>
+    <div class="parking-spot" data-spot="A6">A6</div>
+    <div class="parking-spot" data-spot="A7">A7</div>
+    <div class="parking-spot" data-spot="A8">A8</div>
+    <div class="parking-spot" data-spot="A9">A9</div>
+    <div class="parking-spot" data-spot="A10">A10</div>
+    <div class="parking-spot" data-spot="A11">A11</div>
+    <div class="parking-spot" data-spot="A12">A12</div>
+    <div class="parking-spot" data-spot="A13">A13</div>
+    <div class="parking-spot" data-spot="A14">A14</div>
+    <div class="parking-spot" data-spot="A15">A15</div>
+    <div class="parking-spot" data-spot="A16">A16</div>
+    <div class="parking-spot" data-spot="A17">A17</div>
+    <div class="parking-spot" data-spot="A18">A18</div>
+
+    <!-- Add more parking spots as needed -->
+  </div>
+  <div class="booking-form">
+    <form id="bookingForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email" required>
+
+      <label for="selectedSpot">Selected Spot:</label>
+      <input type="text" id="selectedSpot" name="selectedSpot" readonly>
+
+      <input type="submit" value="Book Parking">
+    </form>
+  </div>
+  <div class="bill" id="bill"></div>
+  <script>
+    const parkingSpots = document.querySelectorAll('.parking-spot');
+    const bookingForm = document.getElementById('bookingForm');
+    const selectedSpotInput = document.getElementById('selectedSpot');
+    const billContainer = document.getElementById('bill');
+
+    let bookedSpot = null;
+
+    parkingSpots.forEach(parkingSpot => {
+        parkingSpot.addEventListener('click', () => {
+            if (parkingSpot.classList.contains('booked')) {
+                alert('You can only book one slot.');
+            } else {
+                if (bookedSpot !== null) {
+                    bookedSpot.classList.remove('booked');
+                }
+                const selectedSpot = parkingSpot.dataset.spot;
+                selectedSpotInput.value = selectedSpot;
+                parkingSpot.classList.add('booked');
+                bookedSpot = parkingSpot;
+            }
+        });
+    });
+
+    bookingForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = e.target.elements.name.value;
+        const email = e.target.elements.email.value;
+        const selectedSpot = e.target.elements.selectedSpot.value;
+
+        if (name && email && selectedSpot) {
+            const billHTML = `
+                <h2>Booking Details</h2>
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Selected Spot:</strong> ${selectedSpot}</p>
+            `;
+            billContainer.innerHTML = billHTML;
+        } else {
+            alert('Please fill in all fields');
+        }
+    });
+
+    function validateEmail(email) {
+        const re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
+</script>
+</body>
+</html>
